@@ -1,16 +1,89 @@
 ---
+import Layout from "../layout/Layout.astro";
+import data from "../data/data.json";
 
+const { personal, company, contact } = data;
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout>
+  <main
+    class="w-full max-w-137.5 bg-white shadow-xl rounded-sm overflow-hidden relative group"
+  >
+    <!-- Dekorativer grüner Streifen oben (optional, für modernen Touch) -->
+    <div class="h-1 w-full bg-brand-green"></div>
+
+    <div class="p-8 md:p-12 relative z-10">
+      <!-- OBERER BEREICH: Name & Logo -->
+      <div
+        class="flex flex-col-reverse md:flex-row justify-between items-start md:items-center gap-6 mb-12"
+      >
+        <!-- Name & Titel -->
+        <div class="space-y-1">
+          <h1 class="text-3xl font-bold text-brand-dark tracking-tight">
+            {personal.name}
+          </h1>
+          <p class="text-lg text-text-muted font-medium">
+            {personal.title}
+          </p>
+        </div>
+
+        <!-- Logo (Nachbau mit HTML/CSS) -->
+        <a
+          href={company.website}
+          target="_blank"
+          class="text-3xl tracking-tighter select-none hover:opacity-80 transition-opacity"
+        >
+          <span class="font-light text-gray-500">ne</span><span
+            class="font-bold text-brand-green">xx</span
+          ><span class="font-light text-gray-500">ess</span>
+        </a>
+      </div>
+
+      <!-- UNTERER BEREICH: Kontaktdaten -->
+      <div class="space-y-3 text-brand-dark text-[15px] leading-relaxed">
+        <!-- Telefon -->
+        <div class="flex items-center gap-3">
+          <a
+            href={`tel:${contact.phone}`}
+            class="hover:text-brand-green transition-colors font-semibold tracking-wide"
+          >
+            {contact.phoneDisplay}
+          </a>
+        </div>
+
+        <!-- Adresse -->
+        <div class="flex items-start gap-3">
+          <a
+            href={contact.address.mapsLink}
+            target="_blank"
+            class="hover:text-brand-green transition-colors"
+          >
+            <span class="block"
+              >{contact.address.street}, {contact.address.zipCity}</span
+            >
+          </a>
+        </div>
+
+        <!-- Email (mit etwas Abstand nach oben wie auf der Karte) -->
+        <div class="pt-1">
+          <a
+            href={`mailto:${contact.email}`}
+            class="text-brand-dark hover:text-brand-green hover:underline transition-all"
+          >
+            {contact.email}
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hintergrund-Textur (feines Rauschen für Papier-Feeling) -->
+    <div
+      class="absolute inset-0 pointer-events-none opacity-40 mix-blend-multiply"
+      style="background-image: url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.8%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22 opacity=%220.1%22/%3E%3C/svg%3E');"
+    >
+    </div>
+  </main>
+
+  <!-- Footer Credits -->
+  <div class="fixed bottom-2 text-xs text-gray-400">Digitale Visitenkarte</div>
+</Layout>

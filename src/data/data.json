@@ -1,0 +1,20 @@
+{
+    "personal": {
+        "name": "Sören Wenzlaff",
+        "title": "Software Architekt"
+    },
+    "company": {
+        "name": "nexxess",
+        "website": "https://nexxess.de"
+    },
+    "contact": {
+        "phone": "+49 176 80 747 818",
+        "phoneDisplay": "+49 (0) 176 80 747 818",
+        "email": "wenzlaff@nexxess.de",
+        "address": {
+            "street": "Margueritenweg 17",
+            "zipCity": "33189 Schlangen",
+            "mapsLink": "https://www.google.com/maps/search/?api=1&query=Margueritenweg+17+33189+Schlangen"
+        }
+    }
+}

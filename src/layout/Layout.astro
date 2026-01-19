@@ -1,0 +1,16 @@
+---
+import "../styles/global.css";
+import data from "../data/data.json";
+const { personal } = data;
+---
+
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{personal.name} - Visitenkarte</title>
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
